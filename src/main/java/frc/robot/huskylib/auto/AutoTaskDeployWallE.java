@@ -1,0 +1,23 @@
+package frc.robot.huskylib.auto;
+
+import frc.robot.WallE;
+
+public class AutoTaskDeployWallE extends AutonomousTaskBase{
+    private WallE m_wallE;
+
+    public AutoTaskDeployWallE(WallE wallE){
+        m_wallE = wallE;
+    }
+
+    @Override
+    public void TaskInitialize() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public boolean DoTask() {
+        m_wallE.deploy();
+        return true;
+    }
+}

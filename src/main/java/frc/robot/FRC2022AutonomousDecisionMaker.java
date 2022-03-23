@@ -1,19 +1,35 @@
 package frc.robot;
 
+import java.util.List;
+import frc.robot.huskylib.auto.*;
+
 public class FRC2022AutonomousDecisionMaker {
 
   private FRC2022Chassis m_Chassis;
   private WallE m_WallE;
   private MaryPoppins m_MaryPoppins;
 
+  private List<AutonomousTaskBase> m_TaskList;
+  private AutonomousTaskDispatcher m_autoTaskDispatcher;
+
+  private AutoTaskDeployWallE autoDeployWallE = new AutoTaskDeployWallE(m_WallE);
+  private AutoTaskDetractWallE autoDetractWallE = new AutoTaskDetractWallE(m_WallE);
+  private AutoTaskRiseMP autoRiseMP = new AutoTaskRiseMP(m_MaryPoppins);
+  private AutoTaskDropMP autoDropMP = new AutoTaskDropMP(m_MaryPoppins);
 
   FRC2022AutonomousDecisionMaker(){
+   // m_TaskList = List.of(new AutoTaskTickCount(25), new AutoTaskHalt());
+    m_TaskList = List.of(autoDeployWallE, autoDetractWallE, autoRiseMP, autoDropMP, new AutoTaskHalt());
+
+    m_autoTaskDispatcher = new AutonomousTaskDispatcher(m_TaskList);
+
   }
 
   public void initialize(){
   }
 
   public void doDecisions(){
+    m_autoTaskDispatcher.RunAutoTask();
   }
 
   public void setChassis(FRC2022Chassis TheChassis){

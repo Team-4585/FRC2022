@@ -90,6 +90,8 @@ public class Robot extends HuskyRobot {
   @Override
   public void autonomousPeriodic() {
     super.autonomousPeriodic();
+
+    m_AutoDecider.doDecisions();
     // switch (m_autoSelected) {
     //   case kCustomAuto:
     //     // Put custom auto code here

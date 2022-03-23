@@ -25,7 +25,7 @@ public final class WiringConnections {
   private static final int CAN_CHANNEL_5 = 5;
   private static final int CAN_CHANNEL_6 = 6;
   private static final int CAN_CHANNEL_7 = 7;
-
+  private static final int CAN_CHANNEL_8 = 8;
 
   //=======================================================
 
@@ -58,5 +58,6 @@ public final class WiringConnections {
   public static final int RIGHT_REAR_CONTROLLER_ID = CAN_CHANNEL_4;
   public static final int LEFT_WALLE_CONTROLLER_ID = CAN_CHANNEL_5;
   public static final int RIGHT_WALLE_CONTROLLER_ID = CAN_CHANNEL_6;
-
+  public static final int FRONT_POPPINS_CONTROLLER_ID = CAN_CHANNEL_7;
+  public static final int REAR_POPPINS_CONTROLLER_ID = CAN_CHANNEL_8;
 }

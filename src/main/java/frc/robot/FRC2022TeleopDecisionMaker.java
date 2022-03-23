@@ -33,6 +33,14 @@ public class FRC2022TeleopDecisionMaker {
     if (m_TheJoystick.button2ReleaseEvent()){
       m_WallE.detract();
     }
+
+    if (m_TheJoystick.button3ReleaseEvent()){
+      m_MaryPoppins.riseUp();
+    }
+
+    if (m_TheJoystick.button4ReleaseEvent()){
+      m_MaryPoppins.dropDown();
+    }
   }
 
   public void setChassis(FRC2022Chassis TheChassis){
