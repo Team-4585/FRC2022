@@ -2,6 +2,7 @@ package frc.robot;
 
 public class FRC2022TeleopDecisionMaker {
   private FRC2022Joystick m_TheJoystick = new FRC2022Joystick();
+  private WeaponsJoystick m_weaponsJoystick = new WeaponsJoystick();
 
   private FRC2022Chassis m_Chassis;
   private WallE m_WallE;
@@ -26,20 +27,28 @@ public class FRC2022TeleopDecisionMaker {
     m_Chassis.setTargSideToSide(m_TheJoystick.getSideToSideValue());
     m_Chassis.setTargRotation(m_TheJoystick.getTwistValue());
 
-    if (m_TheJoystick.triggerReleaseEvent()){
-      m_WallE.deploy();
+    if (m_weaponsJoystick.triggerPushed()){
+      m_WallE.intake();
     }
 
-    if (m_TheJoystick.button2ReleaseEvent()){
+    if (m_weaponsJoystick.triggerReleaseEvent()){
+      m_WallE.stopIntake();
+    }
+
+    if (m_weaponsJoystick.button2ReleaseEvent()){
       m_WallE.detract();
     }
 
-    if (m_TheJoystick.button3ReleaseEvent()){
+    if (m_weaponsJoystick.button3ReleaseEvent()){
       m_MaryPoppins.riseUp();
     }
 
-    if (m_TheJoystick.button4ReleaseEvent()){
+    if (m_weaponsJoystick.button4ReleaseEvent()){
       m_MaryPoppins.dropDown();
+    }
+
+    if (m_weaponsJoystick.button5ReleaseEvent()){
+      m_WallE.deploy();
     }
   }
 

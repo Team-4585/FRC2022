@@ -39,14 +39,14 @@ public class Robot extends HuskyRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
 
-    m_TeleopDecider.initialize();
-    m_AutoDecider.initialize();
     m_TeleopDecider.setChassis(m_TheChassis);
     m_AutoDecider.setChassis(m_TheChassis);
     m_TeleopDecider.setWallESubSystem(m_WallE);
     m_AutoDecider.setWallESubSystem(m_WallE);
     m_TeleopDecider.setMaryPoppinsSubSystem(m_MaryPoppins);
     m_AutoDecider.setMaryPoppinsSubSystem(m_MaryPoppins);
+    m_TeleopDecider.initialize();
+    m_AutoDecider.initialize();
 
     CameraServer.startAutomaticCapture();
   }
@@ -91,7 +91,7 @@ public class Robot extends HuskyRobot {
   public void autonomousPeriodic() {
     super.autonomousPeriodic();
 
-    m_AutoDecider.doDecisions();
+    //m_AutoDecider.doDecisions();
     // switch (m_autoSelected) {
     //   case kCustomAuto:
     //     // Put custom auto code here
@@ -120,8 +120,6 @@ public class Robot extends HuskyRobot {
   @Override
   public void teleopPeriodic() {
     super.teleopPeriodic();
-
-    doTeleopDecisions();
   }
 
   /** This function is called once when the robot is disabled. */

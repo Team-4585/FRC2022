@@ -12,12 +12,11 @@ public class AutoTaskDeployWallE extends AutonomousTaskBase{
     @Override
     public void TaskInitialize() {
         // TODO Auto-generated method stub
-        
+        m_wallE.deploy();
     }
 
     @Override
-    public boolean DoTask() {
-        m_wallE.deploy();
-        return true;
+    public boolean CheckTask() {
+        return m_wallE.isDeployed();
     }
 }

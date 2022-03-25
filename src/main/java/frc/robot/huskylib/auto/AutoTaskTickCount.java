@@ -17,7 +17,7 @@ public class AutoTaskTickCount extends AutonomousTaskBase{
     }
 
     @Override
-    public boolean DoTask() {
+    public boolean CheckTask() {
         System.out.println(m_currentCount);
 
         m_currentCount++;

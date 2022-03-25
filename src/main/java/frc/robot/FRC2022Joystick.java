@@ -101,15 +101,15 @@ public class FRC2022Joystick extends HuskyJoystick{
     return buttonReleaseEvent(TRIGGER_BUTTON);
   }
 
-  public Boolean button2ReleaseEvent(){
-    return buttonReleaseEvent(BUTTON_2);
-  }
+  // public Boolean button2ReleaseEvent(){
+  //   return buttonReleaseEvent(BUTTON_2);
+  // }
 
-  public Boolean button3ReleaseEvent(){
-    return buttonReleaseEvent(BUTTON_3);
-  }
+  // public Boolean button3ReleaseEvent(){
+  //   return buttonReleaseEvent(BUTTON_3);
+  // }
 
-  public Boolean button4ReleaseEvent(){
-    return buttonReleaseEvent(BUTTON_4);
-  }
+  // public Boolean button4ReleaseEvent(){
+  //   return buttonReleaseEvent(BUTTON_4);
+  // }
 }

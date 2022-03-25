@@ -16,7 +16,7 @@ public class AutoTaskDropMP extends AutonomousTaskBase{
     }
 
     @Override
-    public boolean DoTask() {
+    public boolean CheckTask() {
         m_maryPoppins.dropDown();
         return true;
     }

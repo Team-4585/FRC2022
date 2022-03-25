@@ -12,7 +12,7 @@ public class AutoTaskHalt extends AutonomousTaskBase {
     }
 
     @Override
-    public boolean DoTask() {
+    public boolean CheckTask() {
         return false;   // This task never completes.
     }
     

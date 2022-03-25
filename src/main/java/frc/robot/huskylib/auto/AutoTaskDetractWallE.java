@@ -12,12 +12,11 @@ public class AutoTaskDetractWallE extends AutonomousTaskBase{
     @Override
     public void TaskInitialize() {
         // TODO Auto-generated method stub
-        
+        m_wallE.detract();
     }
 
     @Override
-    public boolean DoTask() {
-        m_wallE.detract();
-        return true;
+    public boolean CheckTask() {
+        return m_wallE.isDetracted();
     }
 }

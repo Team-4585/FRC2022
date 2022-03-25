@@ -16,7 +16,7 @@ public class AutoTaskRiseMP extends AutonomousTaskBase{
     }
 
     @Override
-    public boolean DoTask() {
+    public boolean CheckTask() {
         m_maryPoppins.riseUp();
         return true;
     }

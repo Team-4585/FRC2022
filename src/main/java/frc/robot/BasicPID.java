@@ -16,7 +16,6 @@ public class BasicPID extends RoboDevice{
 
   private int CANDeviceID;
 
-
   public BasicPID(int CANPort){
     super("BasicPID Sub System");
     CANDeviceID = CANPort;
@@ -62,7 +61,6 @@ public class BasicPID extends RoboDevice{
     //Magic line of code that gets it going!
     m_pidController.setReference(rotations, CANSparkMax.ControlType.kPosition);
   }
-
 
   //Getter
   public double getPosition(){

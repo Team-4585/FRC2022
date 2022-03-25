@@ -9,6 +9,6 @@ public abstract class AutonomousTaskBase {
 
     // Called each time through the loop.  
     // Return 'true' if the task is completed, 'false' if it is not
-    public abstract boolean DoTask();
+    public abstract boolean CheckTask();
     
 }
