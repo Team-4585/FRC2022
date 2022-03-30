@@ -10,7 +10,7 @@ private BasicPID left_motor;
 private BasicPID right_motor;
 private CANSparkMax intakeMotor;
 
-private double targPosition = 0.7;
+private double targPosition = 2.0;
 private double intakeSpeed = 0.0;
 
 private static double positionThreshold = 0.05;
@@ -43,13 +43,14 @@ private static double positionThreshold = 0.05;
     }
   }
 
+  //because of the direction the motor was installed, we have to invert its values to go "forward"
   public void intake(){
-    setIntakeSpeed(0.6);
+    setIntakeSpeed(-0.6);
     intakeMotor.set(intakeSpeed);
   }
 
   public void reverseIntake(){
-    setIntakeSpeed(0.6);
+    setIntakeSpeed(-0.6);
     intakeMotor.set(-intakeSpeed);
   }
 

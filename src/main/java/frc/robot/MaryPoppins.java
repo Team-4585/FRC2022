@@ -13,8 +13,8 @@ public class MaryPoppins extends RoboDevice{
     m_frontMotor = new BasicPID(WiringConnections.FRONT_POPPINS_CONTROLLER_ID);
     m_rearMotor = new BasicPID(WiringConnections.REAR_POPPINS_CONTROLLER_ID);
 
-    //might need to invert later?
     m_frontMotor.setSlave(m_rearMotor);
+    //m_rearMotor.setSlave(m_frontMotor);
   }
 
   public void Initialize(){
@@ -23,14 +23,28 @@ public class MaryPoppins extends RoboDevice{
 
   public void riseUp(){
     //Update the double for specific values
-    m_frontMotor.setRotations(2);
+    m_frontMotor.setRotations(10);
+    //m_rearMotor.setRotations(10);
+    System.out.println("Rising up");
   }
 
   public void dropDown(){
     //Update the double for specific values
     m_frontMotor.setRotations(0.0);
+    //m_rearMotor.setRotations(0.0);
 
     //NEEDS MAJOR BRAKING HERE!
+  }
+
+  public boolean isRisenUp(){
+    double currentPosition = m_frontMotor.getPosition();
+    System.out.println("Current Position: " + currentPosition);
+
+    //edit this
+    if (currentPosition > 0){
+
+    }
+    return true;
   }
 
   @Override

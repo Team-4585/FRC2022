@@ -99,7 +99,7 @@ public class BasicPID extends RoboDevice{
   }
 
   public void setSlave(BasicPID slaveMotor){
-    slaveMotor.m_motor.follow(m_motor);
+    slaveMotor.m_motor.follow(m_motor, true);
   }
 
 }

@@ -17,9 +17,7 @@ public class AutonomousTaskDispatcher {
 
     public AutonomousTaskDispatcher(List<AutonomousTaskBase> autoTaskList){
         m_autoTaskList = autoTaskList;
-        m_TaskItr = m_autoTaskList.listIterator();
-        m_currentTask = m_TaskItr.next();       // get the first task and bump the iterator
-        m_currentTask.TaskInitialize();
+        resetAuto();     // get the first task and bump the iterator
     }
 
     public void RunAutoTask(){
@@ -29,6 +27,13 @@ public class AutonomousTaskDispatcher {
             m_currentTask = m_TaskItr.next();       // get the next task and bump the iterator
             m_currentTask.TaskInitialize();
         }
+    }
+
+    public void resetAuto(){
+        System.out.println("Resetting Auto");
+        m_TaskItr = m_autoTaskList.listIterator();
+        m_currentTask = m_TaskItr.next();
+        m_currentTask.TaskInitialize();
     }
 
 }

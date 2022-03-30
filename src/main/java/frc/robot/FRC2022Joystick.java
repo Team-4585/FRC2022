@@ -3,12 +3,12 @@ package frc.robot;
 import frc.robot.huskylib.devices.HuskyJoystick;
 
 public class FRC2022Joystick extends HuskyJoystick{
-  private static final int FRC2022_JOYSTICK_PORT = 0;
+  private static final int FRC2022_JOYSTICK_PORT = 1;
  
-  private static final int TRIGGER_BUTTON = 1;
-  private static final int BUTTON_2 = 2;
-  private static final int BUTTON_3 = 3;
-  private static final int BUTTON_4 = 4;
+  private static final int TRIGGER_BUTTON = 0;
+  private static final int BUTTON_2 = 1;
+  private static final int BUTTON_3 = 2;
+  private static final int BUTTON_4 = 3;
 
   private static final double FB_DEAD_ZONE = 0.2;
   private static final double FB_LIVE_ZONE = 1.0 - FB_DEAD_ZONE;

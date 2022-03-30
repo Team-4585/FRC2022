@@ -17,9 +17,7 @@ public class AutoTaskDriveStraight extends AutonomousTaskBase{
     @Override
     public void TaskInitialize() {
         // TODO Auto-generated method stub
-        m_chassis.setTargForwardBack(0.2);
-        m_chassis.setTargRotation(0.0);
-        m_chassis.setTargSideToSide(0.0);
+        m_chassis.driveStraight();
         m_timer.start();
     }
 

@@ -28,11 +28,20 @@ public class FRC2022TeleopDecisionMaker {
     m_Chassis.setTargRotation(m_TheJoystick.getTwistValue());
 
     if (m_weaponsJoystick.triggerPushed()){
+      System.out.println("Intaking");
       m_WallE.intake();
     }
 
     if (m_weaponsJoystick.triggerReleaseEvent()){
       m_WallE.stopIntake();
+    }
+
+    if (m_weaponsJoystick.button6ReleaseEvent()){
+      m_WallE.stopIntake();
+    }
+
+    if (m_weaponsJoystick.button6Pushed()){
+      m_WallE.reverseIntake();
     }
 
     if (m_weaponsJoystick.button2ReleaseEvent()){
@@ -48,6 +57,9 @@ public class FRC2022TeleopDecisionMaker {
     }
 
     if (m_weaponsJoystick.button5ReleaseEvent()){
+      if(m_MaryPoppins.isRisenUp()){
+
+      }
       m_WallE.deploy();
     }
   }

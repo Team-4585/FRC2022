@@ -25,7 +25,9 @@ public class FRC2022AutonomousDecisionMaker {
 
   FRC2022AutonomousDecisionMaker(){
    // m_TaskList = List.of(new AutoTaskTickCount(25), new AutoTaskHalt());
-    m_TaskList = List.of(
+    
+   System.out.println("Initializing list");
+   m_TaskList = List.of(
         autoStartSeq, 
         autoDriveStraight, 
         new AutoTaskHalt()
@@ -36,10 +38,12 @@ public class FRC2022AutonomousDecisionMaker {
   }
 
   public void initialize(){
+    m_autoTaskDispatcher.resetAuto();
   }
 
   public void doDecisions(){
     m_autoTaskDispatcher.RunAutoTask();
+    System.out.println("Entering autonomous decisions");
   }
 
   public void setChassis(FRC2022Chassis TheChassis){

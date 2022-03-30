@@ -42,6 +42,12 @@ public class FRC2022Chassis extends RoboDevice{
     m_driveTrain.setTargRotationSpeed(targRot);
   }
 
+  public void driveStraight(){
+    setTargForwardBack(0.2);
+    setTargRotation(0.0);
+    setTargSideToSide(0.0);
+  }
+
   @Override
   public void doGatherInfo() {
     super.doGatherInfo();

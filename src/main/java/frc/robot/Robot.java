@@ -63,6 +63,7 @@ public class Robot extends HuskyRobot {
     super.robotPeriodic();
   }
 
+  
   /**
    * This autonomous (along with the chooser code above) shows how to select between different
    * autonomous modes using the dashboard. The sendable chooser code works with the Java
@@ -79,6 +80,8 @@ public class Robot extends HuskyRobot {
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
+
+    // m_AutoDecider.initialize();
   }
 
   public void doAutonomousDecisions(){
@@ -126,6 +129,9 @@ public class Robot extends HuskyRobot {
   @Override
   public void disabledInit() {
     super.disabledInit();
+
+    m_AutoDecider.initialize();
+    System.out.println("resetting auto values");
   }
 
   /** This function is called periodically when disabled. */

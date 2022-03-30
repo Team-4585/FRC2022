@@ -54,12 +54,12 @@ public final class WiringConnections {
   // public static final int XX = CAN_CHANNEL_7;
 
   public static final int LEFT_FRONT_CONTROLLER_ID = CAN_CHANNEL_1;
-  public static final int LEFT_REAR_CONTROLLER_ID = CAN_CHANNEL_3;
-  public static final int RIGHT_FRONT_CONTROLLER_ID = CAN_CHANNEL_2;
+  public static final int LEFT_REAR_CONTROLLER_ID = CAN_CHANNEL_2;
+  public static final int RIGHT_FRONT_CONTROLLER_ID = CAN_CHANNEL_3;
   public static final int RIGHT_REAR_CONTROLLER_ID = CAN_CHANNEL_4;
   public static final int LEFT_WALLE_CONTROLLER_ID = CAN_CHANNEL_5;
   public static final int RIGHT_WALLE_CONTROLLER_ID = CAN_CHANNEL_6;
   public static final int FRONT_POPPINS_CONTROLLER_ID = CAN_CHANNEL_7;
-  public static final int REAR_POPPINS_CONTROLLER_ID = CAN_CHANNEL_8; //#region;
+  public static final int REAR_POPPINS_CONTROLLER_ID = CAN_CHANNEL_8;
   public static final int INTAKE_CONTROLLER_ID = CAN_CHANNEL_9;
 }
