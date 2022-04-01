@@ -19,6 +19,7 @@ public class AutoTaskDriveStraight extends AutonomousTaskBase{
         // TODO Auto-generated method stub
         m_chassis.driveStraight();
         m_timer.start();
+        System.out.println("Driving forward");
     }
 
     @Override
@@ -30,9 +31,12 @@ public class AutoTaskDriveStraight extends AutonomousTaskBase{
             System.out.println("Chassis is valid");
         }
 
+        System.out.println(m_timer.get());
 
-        if(m_timer.hasElapsed(4)){
+        if(m_timer.hasElapsed(3)){
             m_chassis.setTargForwardBack(0.0);
+            m_timer.stop();
+            m_timer.reset();
             return true;
         } else{
             return false;

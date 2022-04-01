@@ -5,7 +5,10 @@ import frc.robot.WallE;
 public class AutoTaskDeployWallE extends AutonomousTaskBase{
     private WallE m_wallE;
 
-    public AutoTaskDeployWallE(WallE wallE){
+    public AutoTaskDeployWallE(){
+    }
+
+    public void setWallE(WallE wallE){
         m_wallE = wallE;
     }
 

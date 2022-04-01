@@ -14,6 +14,7 @@ public class AutonomousTaskDispatcher {
     private List<AutonomousTaskBase> m_autoTaskList;
     private AutonomousTaskBase m_currentTask;
     private ListIterator<AutonomousTaskBase> m_TaskItr;
+    private int counter = 0;
 
     public AutonomousTaskDispatcher(List<AutonomousTaskBase> autoTaskList){
         m_autoTaskList = autoTaskList;
@@ -25,7 +26,11 @@ public class AutonomousTaskDispatcher {
         if(m_currentTask.CheckTask()){
             // Task completed. Move to the next one.
             m_currentTask = m_TaskItr.next();       // get the next task and bump the iterator
+            System.out.println("xxxxxxxxxxxxCurrent task: " + m_currentTask);
+
             m_currentTask.TaskInitialize();
+        }else{
+            System.out.println("NOt checking task " + counter);
         }
     }
 
@@ -34,6 +39,10 @@ public class AutonomousTaskDispatcher {
         m_TaskItr = m_autoTaskList.listIterator();
         m_currentTask = m_TaskItr.next();
         m_currentTask.TaskInitialize();
+        System.out.println("Current task2: " + m_currentTask);
+        counter++;
     }
 
 }
+
+

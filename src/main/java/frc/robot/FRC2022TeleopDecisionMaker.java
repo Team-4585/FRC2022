@@ -45,11 +45,19 @@ public class FRC2022TeleopDecisionMaker {
     }
 
     if (m_weaponsJoystick.button2ReleaseEvent()){
-      m_WallE.detract();
+      if(!m_MaryPoppins.isRisenUp()){
+        m_WallE.detract();
+      }else{
+        System.out.println("Error: Mary Poppins on the move!");
+      }
     }
 
     if (m_weaponsJoystick.button3ReleaseEvent()){
-      m_MaryPoppins.riseUp();
+      //if(!m_WallE.isMoving()){
+        m_MaryPoppins.riseUp();
+      //}else{
+      //  System.out.println("Error: WallE on the move!");
+      //}
     }
 
     if (m_weaponsJoystick.button4ReleaseEvent()){
@@ -57,10 +65,11 @@ public class FRC2022TeleopDecisionMaker {
     }
 
     if (m_weaponsJoystick.button5ReleaseEvent()){
-      if(m_MaryPoppins.isRisenUp()){
-
+      if(!m_MaryPoppins.isRisenUp()){
+        m_WallE.deploy();
+      }else{
+        System.out.println("Error: Mary Poppins on the move!");
       }
-      m_WallE.deploy();
     }
   }
 

@@ -67,6 +67,10 @@ public class BasicPID extends RoboDevice{
     return m_currentPosition;
   }
 
+  public void setPosition(double targPosition){
+    m_encoder.setPosition(targPosition);
+  }
+
   //Setters
   //Attach a call to this method to an action on the joystick
   public void setRotations(double targRotations){

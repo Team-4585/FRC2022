@@ -9,6 +9,8 @@ public class AutoTaskHalt extends AutonomousTaskBase {
 
     @Override
     public void TaskInitialize() {
+        System.out.println("Halting");
+
     }
 
     @Override

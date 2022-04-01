@@ -5,7 +5,10 @@ import frc.robot.WallE;
 public class AutoTaskDetractWallE extends AutonomousTaskBase{
     private WallE m_wallE;
 
-    public AutoTaskDetractWallE(WallE wallE){
+    public AutoTaskDetractWallE(){
+    }
+
+    public void setWallE(WallE wallE){
         m_wallE = wallE;
     }
 
@@ -17,6 +20,6 @@ public class AutoTaskDetractWallE extends AutonomousTaskBase{
 
     @Override
     public boolean CheckTask() {
-        return m_wallE.isDetracted();
+        return true;
     }
 }

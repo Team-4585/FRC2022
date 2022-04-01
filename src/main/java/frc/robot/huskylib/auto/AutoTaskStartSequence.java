@@ -7,6 +7,7 @@ public class AutoTaskStartSequence extends AutonomousTaskBase {
 
     @Override
     public void TaskInitialize() {
+        System.out.println("Starting the sequence");
     }
 
     @Override

@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.huskylib.src.HuskyRobot;
-import edu.wpi.first.cameraserver.CameraServer;
+//import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -39,16 +39,18 @@ public class Robot extends HuskyRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
 
+    //m_TeleopDecider.initialize();
+    //m_AutoDecider.initialize();
     m_TeleopDecider.setChassis(m_TheChassis);
     m_AutoDecider.setChassis(m_TheChassis);
     m_TeleopDecider.setWallESubSystem(m_WallE);
     m_AutoDecider.setWallESubSystem(m_WallE);
     m_TeleopDecider.setMaryPoppinsSubSystem(m_MaryPoppins);
     m_AutoDecider.setMaryPoppinsSubSystem(m_MaryPoppins);
-    m_TeleopDecider.initialize();
-    m_AutoDecider.initialize();
+     m_TeleopDecider.initialize();
+     m_AutoDecider.initialize();
 
-    CameraServer.startAutomaticCapture();
+    //CameraServer.startAutomaticCapture();
   }
 
   /**
@@ -81,7 +83,7 @@ public class Robot extends HuskyRobot {
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
 
-    // m_AutoDecider.initialize();
+    m_AutoDecider.initialize();
   }
 
   public void doAutonomousDecisions(){
@@ -130,7 +132,7 @@ public class Robot extends HuskyRobot {
   public void disabledInit() {
     super.disabledInit();
 
-    m_AutoDecider.initialize();
+    //m_AutoDecider.initialize();
     System.out.println("resetting auto values");
   }
 

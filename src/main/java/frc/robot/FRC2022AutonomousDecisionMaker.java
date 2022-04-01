@@ -6,16 +6,18 @@ import frc.robot.huskylib.auto.*;
 public class FRC2022AutonomousDecisionMaker {
 
   private FRC2022Chassis m_Chassis;
-  // private WallE m_WallE;
+  private WallE m_WallE;
   // private MaryPoppins m_MaryPoppins;
 
   private List<AutonomousTaskBase> m_TaskList;
   private AutonomousTaskDispatcher m_autoTaskDispatcher;
 
-  //private AutoTaskDeployWallE autoDeployWallE = new AutoTaskDeployWallE(m_WallE);
-  //autoDetractWallE = new AutoTaskDetractWallE(m_WallE);
+  private AutoTaskDeployWallE autoDeployWallE = new AutoTaskDeployWallE();
+  private AutoTaskDetractWallE autoDetractWallE = new AutoTaskDetractWallE();
   private AutoTaskStartSequence autoStartSeq = new AutoTaskStartSequence();
   private AutoTaskDriveStraight autoDriveStraight = new AutoTaskDriveStraight();
+  private AutoTaskWait autoWait2 = new AutoTaskWait(2);
+
 
   // private AutoTaskDetractWallE autoDetractWallE;
   
@@ -28,16 +30,19 @@ public class FRC2022AutonomousDecisionMaker {
     
    System.out.println("Initializing list");
    m_TaskList = List.of(
-        autoStartSeq, 
-        autoDriveStraight, 
-        new AutoTaskHalt()
-    );
+    autoStartSeq,
+    autoDeployWallE,
+    autoWait2, 
+    autoDetractWallE,
+    autoDriveStraight, 
+    new AutoTaskHalt()
+  );
 
-    m_autoTaskDispatcher = new AutonomousTaskDispatcher(m_TaskList);
-
+  m_autoTaskDispatcher = new AutonomousTaskDispatcher(m_TaskList);
   }
 
   public void initialize(){
+
     m_autoTaskDispatcher.resetAuto();
   }
 
@@ -52,7 +57,9 @@ public class FRC2022AutonomousDecisionMaker {
   }
 
   public void setWallESubSystem(WallE WallESys){
-    // m_WallE = WallESys;
+    m_WallE = WallESys;
+    autoDeployWallE.setWallE(WallESys);
+    autoDetractWallE.setWallE(WallESys);
   }
 
   public void setMaryPoppinsSubSystem(MaryPoppins MaryPoppinsSys){
