@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.huskylib.src.HuskyRobot;
-//import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -28,7 +28,7 @@ public class Robot extends HuskyRobot {
   private WallE m_WallE = new WallE();
   private MaryPoppins m_MaryPoppins = new MaryPoppins();
 
-
+  private LEDDecider m_led = new LEDDecider(0);
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -41,14 +41,16 @@ public class Robot extends HuskyRobot {
 
     //m_TeleopDecider.initialize();
     //m_AutoDecider.initialize();
-    m_TeleopDecider.setChassis(m_TheChassis);
+    m_TeleopDecider.setChassisandLED(m_TheChassis, m_led);
     m_AutoDecider.setChassis(m_TheChassis);
     m_TeleopDecider.setWallESubSystem(m_WallE);
     m_AutoDecider.setWallESubSystem(m_WallE);
     m_TeleopDecider.setMaryPoppinsSubSystem(m_MaryPoppins);
     m_AutoDecider.setMaryPoppinsSubSystem(m_MaryPoppins);
-     m_TeleopDecider.initialize();
-     m_AutoDecider.initialize();
+    m_TeleopDecider.initialize();
+    m_AutoDecider.initialize();
+
+    m_led.rainbowTwinkle();
 
     //CameraServer.startAutomaticCapture();
   }

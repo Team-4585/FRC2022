@@ -8,6 +8,7 @@ public class FRC2022TeleopDecisionMaker {
   private WallE m_WallE;
   private MaryPoppins m_MaryPoppins;
 
+  private LEDDecider m_led;
 
 
   FRC2022TeleopDecisionMaker(){
@@ -71,10 +72,27 @@ public class FRC2022TeleopDecisionMaker {
         System.out.println("Error: Mary Poppins on the move!");
       }
     }
+
+    if (m_weaponsJoystick.button7ReleaseEvent()){
+      m_led.solidBlue();
+    }
+
+    if(m_weaponsJoystick.button8ReleaseEvent()){
+      m_led.solidRed();
+    }
+
+    if(m_weaponsJoystick.button9ReleaseEvent()){
+      m_led.solidGreen();
+    }
+
+    if(m_weaponsJoystick.button10ReleaseEvent()){
+      m_led.rainbowTwinkle();
+    }
   }
 
-  public void setChassis(FRC2022Chassis TheChassis){
+  public void setChassisandLED(FRC2022Chassis TheChassis, LEDDecider led){
     m_Chassis = TheChassis;
+    m_led = led;
   }
 
   public void setWallESubSystem(WallE WallESys){

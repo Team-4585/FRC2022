@@ -33,7 +33,6 @@ private double shootPosition;
 
   //11.3 motor to gearbox, 5 to big arm
   public void Initialize(){
-
   }
 
   public void deploy(){
@@ -54,10 +53,11 @@ private double shootPosition;
     double currentPosition = left_motor.getPosition();
 
     //edit restingPosition value once we figure out the zeroing thing!
-    if (currentPosition > restingPosition){
+    if (Math.abs(currentPosition - restingPosition) < positionThreshold){
       System.out.println("WallE is deployed!");
       return false;
     } else{
+      System.out.println("WallE is deployed!");
       return true;
     }
   }
