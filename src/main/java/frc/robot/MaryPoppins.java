@@ -8,8 +8,6 @@ public class MaryPoppins extends RoboDevice{
   private BasicPID m_rearMotor;
 
   private double initialPosition = 0.0;
-  private double risenPosition;
-  private double positionThreshold = 0.05;
 
   public MaryPoppins(){
     super("MaryPoppins Sub System");
@@ -31,7 +29,6 @@ public class MaryPoppins extends RoboDevice{
     System.out.println("Rise up...");
     //Update the double for specific values
     m_frontMotor.setRotations(10);
-    risenPosition = m_frontMotor.getPosition();
     
     //m_rearMotor.setRotations(10);
     System.out.println("Rising up");
@@ -51,7 +48,7 @@ public class MaryPoppins extends RoboDevice{
     System.out.println("Current Position: " + currentPosition);
 
     //edit this
-    if (Math.abs(currentPosition - initialPosition) < positionThreshold){
+    if (currentPosition > initialPosition){
       System.out.println("Mary Poppins is deployed!");
       return false;
     } else{
