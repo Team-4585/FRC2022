@@ -1,8 +1,11 @@
 package frc.robot;
 
+import frc.robot.huskylib.devices.LogitechController;
+
 public class FRC2022TeleopDecisionMaker {
   private FRC2022Joystick m_TheJoystick = new FRC2022Joystick();
   private WeaponsJoystick m_weaponsJoystick = new WeaponsJoystick();
+  private WeaponsLogitech m_weaponsLogitech = new WeaponsLogitech();
 
   private FRC2022Chassis m_Chassis;
   private WallE m_WallE;
@@ -28,24 +31,24 @@ public class FRC2022TeleopDecisionMaker {
     m_Chassis.setTargSideToSide(m_TheJoystick.getSideToSideValue());
     m_Chassis.setTargRotation(m_TheJoystick.getTwistValue());
 
-    if (m_weaponsJoystick.triggerPushed()){
+    if (m_weaponsLogitech.getLeftTriggerValue() < 0){
       System.out.println("Intaking");
       m_WallE.intake();
     }
 
-    if (m_weaponsJoystick.triggerReleaseEvent()){
+    if (m_weaponsLogitech.getLeftTriggerValue() > -0.01){
       m_WallE.stopIntake();
     }
 
-    if (m_weaponsJoystick.button6ReleaseEvent()){
+    if (m_weaponsLogitech.getRightTriggerValue() > -0.01){
       m_WallE.stopIntake();
     }
 
-    if (m_weaponsJoystick.button6Pushed()){
+    if (m_weaponsLogitech.getRightTriggerValue() < 0){
       m_WallE.reverseIntake();
     }
 
-    if (m_weaponsJoystick.button2ReleaseEvent()){
+    if (m_weaponsLogitech.BPressEvent()){
       if(!m_MaryPoppins.isRisenUp()){
         m_WallE.detract();
       }else{
@@ -53,7 +56,7 @@ public class FRC2022TeleopDecisionMaker {
       }
     }
 
-    if (m_weaponsJoystick.button3ReleaseEvent()){
+    if (m_weaponsLogitech.YReleaseEvent()){
       //if(!m_WallE.isMoving()){
         m_MaryPoppins.riseUp();
       //}else{
@@ -61,11 +64,11 @@ public class FRC2022TeleopDecisionMaker {
       //}
     }
 
-    if (m_weaponsJoystick.button4ReleaseEvent()){
+    if (m_weaponsLogitech.APushed()){
       m_MaryPoppins.dropDown();
     }
 
-    if (m_weaponsJoystick.button5ReleaseEvent()){
+    if (m_weaponsLogitech.XReleaseEvent()){
       if(!m_MaryPoppins.isRisenUp()){
         m_WallE.deploy();
       }else{

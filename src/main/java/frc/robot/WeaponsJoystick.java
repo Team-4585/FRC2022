@@ -3,7 +3,7 @@ package frc.robot;
 import frc.robot.huskylib.devices.HuskyJoystick;
 
 public class WeaponsJoystick extends HuskyJoystick{
-  private static final int WEAPONS_JOYSTICK_PORT = 1;
+  private static final int WEAPONS_JOYSTICK_PORT = 2;
  
   private static final int TRIGGER_BUTTON = 0;
   private static final int BUTTON_2 = 1;

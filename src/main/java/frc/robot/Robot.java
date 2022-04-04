@@ -52,7 +52,7 @@ public class Robot extends HuskyRobot {
 
     m_led.rainbowTwinkle();
 
-    //CameraServer.startAutomaticCapture();
+    CameraServer.startAutomaticCapture();
   }
 
   /**
