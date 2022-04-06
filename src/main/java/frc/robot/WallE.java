@@ -54,7 +54,6 @@ private double shootPosition;
 
     //edit restingPosition value once we figure out the zeroing thing!
     if (Math.abs(currentPosition - restingPosition) < positionThreshold){
-      System.out.println("WallE is deployed!");
       return false;
     } else{
       System.out.println("WallE is deployed!");

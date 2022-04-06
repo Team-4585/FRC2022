@@ -9,6 +9,7 @@ public class FRC2022Joystick extends HuskyJoystick{
   private static final int BUTTON_2 = 1;
   private static final int BUTTON_3 = 2;
   private static final int BUTTON_4 = 3;
+  private static final int BUTTON_7 = 6;
 
   private static final double FB_DEAD_ZONE = 0.2;
   private static final double FB_LIVE_ZONE = 1.0 - FB_DEAD_ZONE;
@@ -101,9 +102,9 @@ public class FRC2022Joystick extends HuskyJoystick{
     return buttonReleaseEvent(TRIGGER_BUTTON);
   }
 
-  // public Boolean button2ReleaseEvent(){
-  //   return buttonReleaseEvent(BUTTON_2);
-  // }
+  public Boolean button7ReleaseEvent(){
+    return buttonReleaseEvent(BUTTON_7);
+  }
 
   // public Boolean button3ReleaseEvent(){
   //   return buttonReleaseEvent(BUTTON_3);

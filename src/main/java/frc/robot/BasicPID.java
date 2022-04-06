@@ -62,6 +62,10 @@ public class BasicPID extends RoboDevice{
     m_pidController.setReference(rotations, CANSparkMax.ControlType.kPosition);
   }
 
+  public void stopMovement(){
+    System.out.println("Stopping Motors");
+  }
+
   //Getter
   public double getPosition(){
     return m_currentPosition;
@@ -69,6 +73,10 @@ public class BasicPID extends RoboDevice{
 
   public void setPosition(double targPosition){
     m_encoder.setPosition(targPosition);
+  }
+
+  public CANSparkMax getMotor(){
+    return m_motor;
   }
 
   //Setters

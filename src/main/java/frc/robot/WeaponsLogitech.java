@@ -61,6 +61,46 @@ public class WeaponsLogitech extends LogitechController{
 
       }
 
+      public double getRightXJoystickValue(){
+        double RetVal = 0.0;
+        double RawVal = getAxisValue(LogitechController.RIGHT_X_AXIS);
+        double RawMagVal = Math.abs(RawVal);  // work with positive numbers
+    
+        if(RawMagVal > LogitechController.DEFAULT_FB_DEADZONE){
+          RetVal = RawMagVal - DEFAULT_FB_DEADZONE;  // distance past dead zone
+          RetVal /= FB_LIVE_ZONE;             // scale to full range of live zone
+          RetVal = RetVal * RetVal;           // square it to make the line a curve rather than straight
+          if(RawVal > 0.0){
+            RetVal = -RetVal;                 // Fix the sign, note that we're reversing the sign from the
+          }                                // raw joystick reading.
+          }
+    
+          System.out.println(RetVal);
+  
+          return RetVal;
+  
+        }
+
+        public double getRightYJoystickValue(){
+          double RetVal = 0.0;
+          double RawVal = getAxisValue(LogitechController.RIGHT_Y_AXIS);
+          double RawMagVal = Math.abs(RawVal);  // work with positive numbers
+      
+          if(RawMagVal > LogitechController.DEFAULT_FB_DEADZONE){
+            RetVal = RawMagVal - DEFAULT_FB_DEADZONE;  // distance past dead zone
+            RetVal /= FB_LIVE_ZONE;             // scale to full range of live zone
+            RetVal = RetVal * RetVal;           // square it to make the line a curve rather than straight
+            if(RawVal > 0.0){
+              RetVal = -RetVal;                 // Fix the sign, note that we're reversing the sign from the
+            }                                // raw joystick reading.
+            }
+      
+            System.out.println(RetVal);
+    
+            return RetVal;
+    
+          }
+
 
   public Boolean APushed(){
     return isButtonPushed(BUTTON_A);

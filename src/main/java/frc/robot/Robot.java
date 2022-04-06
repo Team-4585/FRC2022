@@ -29,6 +29,11 @@ public class Robot extends HuskyRobot {
   private MaryPoppins m_MaryPoppins = new MaryPoppins();
 
   private LEDDecider m_led = new LEDDecider(0);
+
+  // public double getMPInitalPosition(){
+  //   return maryPoppinsInitialPosition;
+  // }
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -49,6 +54,7 @@ public class Robot extends HuskyRobot {
     m_AutoDecider.setMaryPoppinsSubSystem(m_MaryPoppins);
     m_TeleopDecider.initialize();
     m_AutoDecider.initialize();
+    m_MaryPoppins.Initialize();
 
     m_led.rainbowTwinkle();
     

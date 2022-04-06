@@ -19,6 +19,8 @@ public class FRC2022TeleopDecisionMaker {
   }
 
   public void initialize(){
+   // m_MaryPoppins.resetPosition();
+
   }
 
   public void doDecisions(){
@@ -31,6 +33,10 @@ public class FRC2022TeleopDecisionMaker {
     m_Chassis.setTargSideToSide(m_TheJoystick.getSideToSideValue());
     m_Chassis.setTargRotation(m_TheJoystick.getTwistValue());
 
+    // double maryPoppinSpeed = m_weaponsJoystick.getForwardBackwardValue();
+    // m_MaryPoppins.rotate(maryPoppinSpeed);
+
+    //Intaking
    if (m_weaponsLogitech.getLeftTriggerValue() < 0){
       m_WallE.intake();
     } else if (m_weaponsLogitech.getRightTriggerValue() < 0){
@@ -40,15 +46,14 @@ public class FRC2022TeleopDecisionMaker {
       m_WallE.stopIntake();
     }
 
-    // if (m_weaponsLogitech.getLeftTriggerValue() > -0.01){
-    //   m_WallE.stopIntake();
-    // }
+    //Reset MP
+    if (m_TheJoystick.button7ReleaseEvent()){
+      m_MaryPoppins.lowerToInitialPosition();
+      System.out.println("Lowering, position is: " + m_MaryPoppins.getMotor().getPosition());
+      //m_MaryPoppins.setInitialPosition(initialPosition);
+    }
 
-    // if (m_weaponsLogitech.getRightTriggerValue() > -0.01){
-    //   m_WallE.stopIntake();
-    // }
-
-
+    //Walle to resting position
     if (m_weaponsLogitech.BPressEvent()){
       if(!m_MaryPoppins.isRisenUp()){
         m_WallE.detract();
@@ -57,6 +62,7 @@ public class FRC2022TeleopDecisionMaker {
       }
     }
 
+    //MP prep to rise
     if (m_weaponsLogitech.YReleaseEvent()){
       //if(!m_WallE.isMoving()){
         m_MaryPoppins.riseUp();
@@ -78,26 +84,27 @@ public class FRC2022TeleopDecisionMaker {
     }
 
     if (m_weaponsLogitech.button5ReleaseEvent()){
-      m_led.solidBlue();
-      System.out.println("blue");
-
+      m_MaryPoppins.lowRise();
     }
 
     if(m_weaponsLogitech.button6ReleaseEvent()){
-      m_led.solidRed();
-      System.out.println("Red");
-
+      m_MaryPoppins.midRise();
     }
 
-    if(m_weaponsLogitech.button7ReleaseEvent()){
+    if(m_weaponsLogitech.getRightXJoystickValue() > 0){
       m_led.solidGreen();
-      System.out.println("Green");
-
     }
 
-    if(m_weaponsLogitech.button8ReleaseEvent()){
+    if(m_weaponsLogitech.getRightXJoystickValue() < 0){
+      m_led.solidBlue();
+    }
+
+    if(m_weaponsLogitech.getRightYJoystickValue() > 0){
       m_led.rainbowTwinkle();
-      System.out.println("Twinkling");
+    }
+
+    if(m_weaponsLogitech.getRightYJoystickValue() < 0){
+      m_led.solidRed();
     }
   }
 

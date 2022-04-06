@@ -16,8 +16,36 @@ public class WeaponsJoystick extends HuskyJoystick{
   private static final int BUTTON_9 = 8;
   private static final int BUTTON_10 = 9;
 
+  private static final double FB_DEAD_ZONE = 0.2;
+  private static final double FB_LIVE_ZONE = 1.0 - FB_DEAD_ZONE;
+
+  private static final double SS_DEAD_ZONE = 0.2;
+  private static final double SS_LIVE_ZONE = 1.0 - SS_DEAD_ZONE;
+
+  private static final double ROT_DEAD_ZONE = 0.1;
+  private static final double ROT_LIVE_ZONE = 1.0 - ROT_DEAD_ZONE;
+
+
   public WeaponsJoystick(){
       super(WEAPONS_JOYSTICK_PORT);
+  }
+
+  public double getForwardBackwardValue(){
+    double RetVal = 0.0;
+    double RawVal = getAxisValue(HuskyJoystick.AXIS_FORWARD_BACKWARD);
+    double RawMagVal = Math.abs(RawVal);  // work with positive numbers
+
+    if(RawMagVal > FB_DEAD_ZONE){
+      RetVal = RawMagVal - FB_DEAD_ZONE;  // distance past dead zone
+      RetVal /= FB_LIVE_ZONE;             // scale to full range of live zone
+      RetVal = RetVal * RetVal;           // square it to make the line a curve rather than straight
+      if(RawVal > 0.0){
+        RetVal = -RetVal;                 // Fix the sign, note that we're reversing the sign from the
+                                          // raw joystick reading.
+      }
+    }
+
+    return RetVal;
   }
 
   public Boolean triggerPushed(){
