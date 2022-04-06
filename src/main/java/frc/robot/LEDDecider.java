@@ -19,6 +19,7 @@ public class LEDDecider extends SubsystemBase{
 
   public void rainbowTwinkle(){
     set(-0.55);
+    System.out.println("rainbow twinkling");
   }
 
   public void solidGreen(){

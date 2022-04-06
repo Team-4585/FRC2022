@@ -20,7 +20,7 @@ public class MaryPoppins extends RoboDevice{
     m_frontMotor.setSlave(m_rearMotor);
     //m_rearMotor.setSlave(m_frontMotor);
 
-    initialPosition = m_frontMotor.getPosition();
+    m_frontMotor.setPosition(initialPosition);
   }
 
   public void Initialize(){
@@ -30,7 +30,7 @@ public class MaryPoppins extends RoboDevice{
   public void riseUp(){
     System.out.println("Rise up...");
     //Update the double for specific values
-    m_frontMotor.setRotations(10);
+    m_frontMotor.setRotations(70);
     risenPosition = m_frontMotor.getPosition();
     
     //m_rearMotor.setRotations(10);

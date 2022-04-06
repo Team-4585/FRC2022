@@ -31,22 +31,23 @@ public class FRC2022TeleopDecisionMaker {
     m_Chassis.setTargSideToSide(m_TheJoystick.getSideToSideValue());
     m_Chassis.setTargRotation(m_TheJoystick.getTwistValue());
 
-    if (m_weaponsLogitech.getLeftTriggerValue() < 0){
-      System.out.println("Intaking");
+   if (m_weaponsLogitech.getLeftTriggerValue() < 0){
       m_WallE.intake();
-    }
-
-    if (m_weaponsLogitech.getLeftTriggerValue() > -0.01){
-      m_WallE.stopIntake();
-    }
-
-    if (m_weaponsLogitech.getRightTriggerValue() > -0.01){
-      m_WallE.stopIntake();
-    }
-
-    if (m_weaponsLogitech.getRightTriggerValue() < 0){
+    } else if (m_weaponsLogitech.getRightTriggerValue() < 0){
       m_WallE.reverseIntake();
+      System.out.println("Reversing intake");
+    } else {
+      m_WallE.stopIntake();
     }
+
+    // if (m_weaponsLogitech.getLeftTriggerValue() > -0.01){
+    //   m_WallE.stopIntake();
+    // }
+
+    // if (m_weaponsLogitech.getRightTriggerValue() > -0.01){
+    //   m_WallE.stopIntake();
+    // }
+
 
     if (m_weaponsLogitech.BPressEvent()){
       if(!m_MaryPoppins.isRisenUp()){
@@ -61,7 +62,7 @@ public class FRC2022TeleopDecisionMaker {
         m_MaryPoppins.riseUp();
       //}else{
       //  System.out.println("Error: WallE on the move!");
-      //}
+     // }
     }
 
     if (m_weaponsLogitech.APushed()){
@@ -76,20 +77,27 @@ public class FRC2022TeleopDecisionMaker {
       }
     }
 
-    if (m_weaponsJoystick.button7ReleaseEvent()){
+    if (m_weaponsLogitech.button5ReleaseEvent()){
       m_led.solidBlue();
+      System.out.println("blue");
+
     }
 
-    if(m_weaponsJoystick.button8ReleaseEvent()){
+    if(m_weaponsLogitech.button6ReleaseEvent()){
       m_led.solidRed();
+      System.out.println("Red");
+
     }
 
-    if(m_weaponsJoystick.button9ReleaseEvent()){
+    if(m_weaponsLogitech.button7ReleaseEvent()){
       m_led.solidGreen();
+      System.out.println("Green");
+
     }
 
-    if(m_weaponsJoystick.button10ReleaseEvent()){
+    if(m_weaponsLogitech.button8ReleaseEvent()){
       m_led.rainbowTwinkle();
+      System.out.println("Twinkling");
     }
   }
 

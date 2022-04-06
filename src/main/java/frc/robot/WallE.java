@@ -65,6 +65,8 @@ private double shootPosition;
   //because of the direction the motor was installed, we have to invert its values to go "forward"
   public void intake(){
     setIntakeSpeed(-0.6);
+    System.out.println("Intaking" +  intakeMotor.get());
+   
     intakeMotor.set(intakeSpeed);
   }
 

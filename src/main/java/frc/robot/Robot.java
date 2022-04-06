@@ -51,6 +51,7 @@ public class Robot extends HuskyRobot {
     m_AutoDecider.initialize();
 
     m_led.rainbowTwinkle();
+    
 
     CameraServer.startAutomaticCapture();
   }
