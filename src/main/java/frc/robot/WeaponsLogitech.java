@@ -55,7 +55,7 @@ public class WeaponsLogitech extends LogitechController{
         }                                // raw joystick reading.
         }
   
-        System.out.println(RetVal);
+        //System.out.println(RetVal);
 
         return RetVal;
 
@@ -75,7 +75,7 @@ public class WeaponsLogitech extends LogitechController{
           }                                // raw joystick reading.
           }
     
-          System.out.println(RetVal);
+          //System.out.println(RetVal);
   
           return RetVal;
   
@@ -95,7 +95,7 @@ public class WeaponsLogitech extends LogitechController{
             }                                // raw joystick reading.
             }
       
-            System.out.println(RetVal);
+            //System.out.println(RetVal);
     
             return RetVal;
     

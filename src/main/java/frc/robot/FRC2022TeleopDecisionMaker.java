@@ -24,6 +24,7 @@ public class FRC2022TeleopDecisionMaker {
   }
 
   public void doDecisions(){
+    m_MaryPoppins.initialize();
 
     // System.out.println("-- F/B: " + m_TheJoystick.getForwardBackwardValue() + 
     //                    "   S/S: " + m_TheJoystick.getSideToSideValue() + 
@@ -56,6 +57,7 @@ public class FRC2022TeleopDecisionMaker {
     //Walle to resting position
     if (m_weaponsLogitech.BPressEvent()){
       if(!m_MaryPoppins.isRisenUp()){
+        //m_WallE.goToInitialPosition(); 
         m_WallE.detract();
       }else{
         System.out.println("Error: Mary Poppins on the move!");
@@ -66,8 +68,9 @@ public class FRC2022TeleopDecisionMaker {
     if (m_weaponsLogitech.YReleaseEvent()){
       //if(!m_WallE.isMoving()){
         m_MaryPoppins.riseUp();
+        System.out.println("Rising up");
       //}else{
-      //  System.out.println("Error: WallE on the move!");
+       // System.out.println("Error: WallE on the move!");
      // }
     }
 
@@ -77,6 +80,7 @@ public class FRC2022TeleopDecisionMaker {
 
     if (m_weaponsLogitech.XReleaseEvent()){
       if(!m_MaryPoppins.isRisenUp()){
+        //m_WallE.goToInitialPosition();
         m_WallE.deploy();
       }else{
         System.out.println("Error: Mary Poppins on the move!");

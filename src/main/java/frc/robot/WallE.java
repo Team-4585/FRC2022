@@ -10,13 +10,14 @@ private BasicPID left_motor;
 private BasicPID right_motor;
 private CANSparkMax intakeMotor;
 
-private double targRotations = 2.0;
+private double targRotations = -6;
 private double intakeSpeed = 0.0;
 
 private static double positionThreshold = 0.05;
-private double restingPosition = -2.0;
+private double restingPosition = 16.25;
 private double initialPosition = 0.0;
 private double shootPosition;
+private double stopPosition = 3;
 
   public WallE(){
     super("WallE Sub System");
@@ -26,13 +27,18 @@ private double shootPosition;
   
     left_motor.setSlave(right_motor);
 
+   // left_motor.setFFValue(constant);
+
     intakeMotor = new CANSparkMax(WiringConnections.INTAKE_CONTROLLER_ID, MotorType.kBrushless);
 
     left_motor.setPosition(initialPosition);
+    left_motor.setRotations(initialPosition);
   }
 
   //11.3 motor to gearbox, 5 to big arm
-  public void Initialize(){
+  public void initialize(){
+    left_motor.setPosition(initialPosition);
+    left_motor.setRotations(initialPosition);
   }
 
   public void deploy(){
@@ -63,14 +69,14 @@ private double shootPosition;
 
   //because of the direction the motor was installed, we have to invert its values to go "forward"
   public void intake(){
-    setIntakeSpeed(-0.6);
+    setIntakeSpeed(-1);
     System.out.println("Intaking" +  intakeMotor.get());
    
     intakeMotor.set(intakeSpeed);
   }
 
   public void reverseIntake(){
-    setIntakeSpeed(-0.6);
+    setIntakeSpeed(-1);
     intakeMotor.set(-intakeSpeed);
   }
 
@@ -90,10 +96,17 @@ private double shootPosition;
   public void detract(){
     //Update the double for specific values
     left_motor.setRotations(restingPosition);
+    // if(left_motor.getPosition() > stopPosition){
+    //   left_motor.getMotor().set(-0.1);
+    // }
   }
 
   public void setIntakeSpeed(double speed){
     intakeSpeed = speed;
+  }
+
+  public void goToInitialPosition(){
+    left_motor.setRotations(initialPosition);
   }
 
   @Override

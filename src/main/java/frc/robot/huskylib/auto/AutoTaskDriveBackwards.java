@@ -2,34 +2,28 @@ package frc.robot.huskylib.auto;
 
 import frc.robot.FRC2022Chassis;
 import edu.wpi.first.wpilibj.Timer;
-import frc.robot.WallE;
 
-public class AutoTaskDriveStraight extends AutonomousTaskBase{
+public class AutoTaskDriveBackwards extends AutonomousTaskBase{
     private FRC2022Chassis m_chassis;
     private Timer m_timer = new Timer();
-    private WallE m_wallE;
-    private double secondCount = 0.0;
     private double motorSpeed = 0.0;
+    private double secondCount = 0.0;
 
-    public AutoTaskDriveStraight(double seconds, double speed){
-        secondCount = seconds;
+    public AutoTaskDriveBackwards(double seconds, double speed){
         motorSpeed = speed;
+        secondCount = seconds;
     }
 
     public void setChassis(FRC2022Chassis chassis){
         m_chassis = chassis;
     }
 
-    public void setWallE(WallE walle){
-        m_wallE = walle;
-    }
-
     @Override
     public void TaskInitialize() {
         // TODO Auto-generated method stub
-        m_chassis.driveStraight(motorSpeed);
+        m_chassis.driveBackwards(motorSpeed);
         m_timer.start();
-        System.out.println("Driving forward");
+        System.out.println("Driving backwards");
     }
 
     @Override
@@ -47,7 +41,6 @@ public class AutoTaskDriveStraight extends AutonomousTaskBase{
             m_chassis.setTargForwardBack(0.0);
             m_timer.stop();
             m_timer.reset();
-            m_wallE.stopIntake();
             return true;
         } else{
             return false;

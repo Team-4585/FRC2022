@@ -3,6 +3,7 @@ package frc.robot;
 import frc.robot.huskylib.src.RoboDevice;
 import com.revrobotics.*;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import java.lang.Math;
 
 public class BasicPID extends RoboDevice{
   
@@ -29,13 +30,13 @@ public class BasicPID extends RoboDevice{
     m_pidController.setFeedbackDevice(m_encoder);
 
     //Setting up PID values
-    kP = 0.1;
-    kI = 1e-4;
-    kD = 1;
+    kP = 0.06;
+    kI = 0; //1e-4;
+    kD = 10;
     kIz = 0;
     kFF = 0;
-    kMaxOutput = 1;
-    kMinOutput = -1;
+    kMaxOutput = 0.5;
+    kMinOutput = -0.5;
     
     m_pidController.setP(kP);
     m_pidController.setI(kI);
@@ -52,6 +53,9 @@ public class BasicPID extends RoboDevice{
   public void doGatherInfo(){
     super.doGatherInfo();
     m_currentPosition = m_encoder.getPosition();
+    // double scaledValue = m_currentPosition * 0.11;
+    // double math = Math.sin(scaledValue);
+    // //setFFValue(math * );
   }
 
   @Override

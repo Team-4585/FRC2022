@@ -44,8 +44,8 @@ public class Robot extends HuskyRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
 
-    //m_TeleopDecider.initialize();
-    //m_AutoDecider.initialize();
+    m_TeleopDecider.initialize();
+    m_AutoDecider.initialize();
     m_TeleopDecider.setChassisandLED(m_TheChassis, m_led);
     m_AutoDecider.setChassis(m_TheChassis);
     m_TeleopDecider.setWallESubSystem(m_WallE);
@@ -54,9 +54,12 @@ public class Robot extends HuskyRobot {
     m_AutoDecider.setMaryPoppinsSubSystem(m_MaryPoppins);
     m_TeleopDecider.initialize();
     m_AutoDecider.initialize();
-    m_MaryPoppins.Initialize();
+    m_MaryPoppins.initialize();
+    m_WallE.initialize();
 
     m_led.rainbowTwinkle();
+
+    System.out.println("Enabled the robot");
     
 
     CameraServer.startAutomaticCapture();

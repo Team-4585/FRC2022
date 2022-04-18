@@ -15,8 +15,12 @@ public class FRC2022AutonomousDecisionMaker {
   private AutoTaskDeployWallE autoDeployWallE = new AutoTaskDeployWallE();
   private AutoTaskDetractWallE autoDetractWallE = new AutoTaskDetractWallE();
   private AutoTaskStartSequence autoStartSeq = new AutoTaskStartSequence();
-  private AutoTaskDriveStraight autoDriveStraight = new AutoTaskDriveStraight();
+  private AutoTaskDriveStraight autoDriveStraight = new AutoTaskDriveStraight(0.5, 0.2);
+  private AutoTaskDriveStraight autoDriveFast = new AutoTaskDriveStraight(3, 0.4);
   private AutoTaskWait autoWait2 = new AutoTaskWait(2);
+  private AutoTaskOuttake autoSpitBall = new AutoTaskOuttake();
+  private AutoTaskDriveBackwards autoBackwards = new AutoTaskDriveBackwards(4, 0.2);
+  private AutoTaskIntake autoIntake = new AutoTaskIntake();
 
 
   // private AutoTaskDetractWallE autoDetractWallE;
@@ -32,9 +36,21 @@ public class FRC2022AutonomousDecisionMaker {
    m_TaskList = List.of(
     autoStartSeq,
     autoDeployWallE,
-    autoWait2, 
+    autoSpitBall, 
     autoDetractWallE,
+    autoDriveStraight,
+    autoDriveStraight,
+    autoDriveStraight,
+    autoDriveStraight,
+    autoDriveStraight,
+    autoDriveStraight,
+    autoIntake,
     autoDriveStraight, 
+    autoDeployWallE,
+    autoBackwards,
+    autoSpitBall,
+    autoDriveFast,
+    autoDetractWallE,
     new AutoTaskHalt()
   );
 
@@ -54,13 +70,19 @@ public class FRC2022AutonomousDecisionMaker {
   public void setChassis(FRC2022Chassis TheChassis){
     m_Chassis = TheChassis;
     autoDriveStraight.setChassis(TheChassis);
+    autoDriveFast.setChassis(TheChassis);
+    autoBackwards.setChassis(TheChassis);
   }
 
   public void setWallESubSystem(WallE WallESys){
     m_WallE = WallESys;
     autoDeployWallE.setWallE(WallESys);
     autoDetractWallE.setWallE(WallESys);
-  }
+    autoSpitBall.setWallESpinner(WallESys);
+    autoDriveStraight.setWallE(WallESys);
+    autoDriveFast.setWallE(WallESys);
+    autoIntake.setWallESpinner(WallESys);
+    }
 
   public void setMaryPoppinsSubSystem(MaryPoppins MaryPoppinsSys){
     // m_MaryPoppins = MaryPoppinsSys;
